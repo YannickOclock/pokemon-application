@@ -1,0 +1,193 @@
+body {
+    background: #424242 url(../images/body_bg.png);
+    min-height: 95vh;
+    margin: 0;
+    font-family: "Flexo";
+}
+
+div.container {
+    width: 1280px;
+    margin: 0 auto;
+    min-height: 40vh;
+    background-color: #fff;
+}
+
+/* section du haut */
+section.title {
+    width: 100%;
+    padding-top: 90px;
+    display: flex;
+    gap: 10px;
+    position: relative;
+}
+
+a.button {
+    text-decoration: none; /* annuler le style par défaut */
+    display: block;
+    width: 50%;
+    height: 110px;
+    background-color: #a4a4a4;
+    font-weight: bold;
+}
+
+a.button:hover {
+    background-color: #30a7d7;
+}
+
+a.button div.content {
+    padding-top: 16px;
+    width: 448px;
+    float: right;
+    display: flex;
+}
+
+.pokemon-btn {
+    background-color: #fff;
+    height: 26px;
+    width: 26px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 20px;
+    text-align: center;
+    color: #616161;
+}
+
+.pokemon-btn i.fa-solid {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.pokemon-number, .pokemon-name {
+    color: #fff;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.pokemon-name {
+    color: #616161;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.pokemon-title {
+    width: calc(50% + 50px);
+    height: 51px;
+    position: absolute;
+    bottom: 0;
+    left: calc(25% - 37px);
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+/* titre du pokémon actuel */
+
+.pokemon-title .pokemon-name {
+    color: #222;
+    font-size: 36px;
+    line-height: 36px;
+    margin-top: 18px;
+}
+
+.pokemon-title .pokemon-number {
+    color: #616161;
+    font-size: 36px;
+    line-height: 36px;
+    margin-top: 18px;
+    margin-left: 8px;
+}
+
+/* arrondis */
+.pokemon-title-before {
+    width: 75px;
+    height: 52px;
+    display: block;
+    background: transparent url(../images/notch-white-xxl.png) no-repeat 0 0;
+    position: absolute;
+    bottom: 0;
+    left: calc(25% - 112px);
+}
+
+.pokemon-title-after {
+    width: 75px;
+    height: 52px;
+    display: block;
+    background: transparent url(../images/notch-white-xxl.png) no-repeat right top;
+    position: absolute;
+    bottom: 0;
+    right: calc(25% - 88px);
+}
+
+/* details pokemon */
+.pokemon-details {
+    width: 100%;
+    min-height: 50vh;
+    background: transparent url(../images/container_bg.png) repeat;
+}
+.pokemon-details--content {
+    width: 854px;
+    min-height: 50vh;
+    background: #fff; 
+    margin: auto;
+    padding-top: 80px;
+    display: flex;
+
+    /* fonts */
+    color: #212121;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* partie de gauche */
+.pokemon-details--content-left {
+    width: 50%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.pokemon-avatar {
+    background-color: #F2F2F2;
+    max-width: 100%;
+}
+
+/* partie de droite */
+.pokemon-details--content-right {
+    width: 50%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.pokemon-details--abilities {
+    background-color: #30a7d7;
+    color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+}
+.pokemon-details--abilities-left, .pokemon-details--abilities-right {
+    width: 50%;
+}
+
+/* attributs */
+.pokemon-details--abilities ul {
+    padding-inline-start: 0;
+}
+
+.pokemon-details--abilities ul li {
+    list-style: none;
+}
+
+.attribute-title, .attribute-value {
+    display: block;
+    font-size: 20px;
+}
+
+.attribute-title {
+    color: #fff;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.attribute-value {
+    color: #212121;
+    margin-left: 20px;
+    margin-top: 20px;
+}
