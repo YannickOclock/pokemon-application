@@ -1,10 +1,45 @@
+<?php
+    // Récupération des données sur une API
+
+    $pokemonNumber = 133;
+
+    $url = "https://api-pokemon-fr.vercel.app/api/v1/pokemon/$pokemonNumber";
+    $client = curl_init($url);
+    curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($client);
+
+    $results = json_decode($response);
+
+    // Extraction des résultats dans des variables
+
+    $pokemonNumber = str_pad($pokemonNumber, 4, '0', STR_PAD_LEFT);
+    $pokemonName = $results->name->fr;
+    
+    $pokemonAvatar = $results->sprites->regular;
+
+    $pokemonCategory = $results->category;
+    $pokemonTalent = $results->talents[0]->name;
+    $pokemonHeight = $results->height;
+    $pokemonWeight = $results->weight;
+
+    $pokemonDescription = "Quand il rentre son cou dans sa carapace, il peut projeter de l’eau à haute pression.";
+
+    $pokemonPrevNumber = str_pad(6, 4, '0', STR_PAD_LEFT);
+    $pokemonPrevName = "Dracaufeu";
+
+    $pokemonNextNumber = str_pad(8, 4, '0', STR_PAD_LEFT);
+    $pokemonNextName = "Carabaffe";
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carapuce | Pokédex</title>
+    <title><?= $pokemonName ?> | Pokédex</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <link href="https://db.onlinewebfonts.com/c/51ba22ae06790efd464bde752a2cd9d1?family=Flexo" rel="stylesheet" type="text/css" />
@@ -18,14 +53,14 @@
                     <span class="pokemon-btn">
                         <i class="fa-solid fa-angle-left"></i>
                     </span>
-                    <span class="pokemon-number">Nº 0006</span>
-                    <span class="pokemon-name">Dracaufeu</span>
+                    <span class="pokemon-number">Nº <?= $pokemonPrevNumber ?></span>
+                    <span class="pokemon-name"><?= $pokemonPrevName ?></span>
                 </div>
             </a>
             <a href="./carabaffe" class="button">
                 <div class="content">
-                    <span class="pokemon-name">Carabaffe</span>
-                    <span class="pokemon-number">Nº 0008</span>
+                    <span class="pokemon-name"><?= $pokemonNextName ?></span>
+                    <span class="pokemon-number">Nº <?= $pokemonNextNumber ?></span>
                     <span class="pokemon-btn">
                         <i class="fa-solid fa-angle-right"></i>
                     </span>
@@ -33,15 +68,15 @@
             </a>
             <div class="pokemon-title-before"></div>
             <div class="pokemon-title">
-                <div class="pokemon-name">Carapuce</div>
-                <div class="pokemon-number">Nº 0007</div>
+                <div class="pokemon-name"><?= $pokemonName ?></div>
+                <div class="pokemon-number">Nº <?= $pokemonNumber ?></div>
             </div>
             <div class="pokemon-title-after"></div>
         </section>
         <section class="pokemon-details">
             <div class="pokemon-details--content">
                 <div class="pokemon-details--content-left">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png" alt="Carapuce" class="pokemon-avatar">
+                    <img src="<?= $pokemonAvatar ?>" alt="Carapuce" class="pokemon-avatar">
                 </div>
                 <div class="pokemon-details--content-right">
                     <p class="pokemon-details--description">
@@ -52,11 +87,11 @@
                             <ul>
                                 <li>
                                     <span class="attribute-title">Taille</span>
-                                    <span class="attribute-value">0,5 m</span>
+                                    <span class="attribute-value"><?= $pokemonHeight ?></span>
                                 </li>
                                 <li>
                                     <span class="attribute-title">Poids</span>
-                                    <span class="attribute-value">9,0 kg</span>
+                                    <span class="attribute-value"><?= $pokemonWeight ?></span>
                                 </li>
                                 <li>
                                     <span class="attribute-title">Sexe</span>
@@ -71,11 +106,11 @@
                             <ul>
                                 <li>
                                     <span class="attribute-title">Catégorie</span>
-                                    <span class="attribute-value">Minitortue</span>
+                                    <span class="attribute-value"><?= $pokemonCategory ?></span>
                                 </li>
                                 <li>
                                     <span class="attribute-title">Talent</span>
-                                    <span class="attribute-value">Torrent</span>
+                                    <span class="attribute-value"><?= $pokemonTalent ?></span>
                                 </li>
                             </ul>
                         </div>
