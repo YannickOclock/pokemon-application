@@ -191,3 +191,82 @@ a.button div.content {
     margin-left: 20px;
     margin-top: 20px;
 }
+
+/* les types du pokémon */
+
+.pokemon-details--type h3, .pokemon-details--weaknesses h3 {
+    font-family: "Flexo";
+}
+
+.pokemon-details--type ul, .pokemon-details--weaknesses ul {
+    list-style-type: none;
+    font-size: 16px;
+    font-weight: normal;
+    padding-left: 0px;
+}
+
+.pokemon-details--type li, .pokemon-details--weaknesses li {
+    display: inline-block;
+    width: 32%;
+    border-radius: 5px;
+    margin-top: 8px;
+    margin-right: 8px;
+    padding: 4px;
+    text-align: center;
+    background-color: grey;
+}
+
+/* Stats */
+
+.pokemon-stats-info {
+    background-color: #a4a4a4;
+    border-radius: 10px;
+    display: block;
+    margin: 1em 0;
+    width: 90%;
+    padding: 1em;
+}
+
+.pokemon-stats-info > ul {
+    list-style-type: none;
+    padding-left: 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+.pokemon-stats-info > ul > li {
+    width: 14%;
+    margin: 0.25em;
+}
+
+.pokemon-stats-info > ul > li > .gauge {
+    list-style-type: none;
+    padding-left: 0px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.pokemon-stats-info > ul > li > .gauge > li {
+    background: transparent;
+    border: 2px solid #a4a4a4;
+    height: 6px;
+    background: #fff;
+    width: 100%;
+}
+
+.pokemon-stats-info > ul > li > span {
+    display: block;
+    font-family: "Roboto",arial,sans-serif;
+    font-weight: bold;
+    color: #212121;
+    font-size: 10px;
+    text-align: center;
+    text-transform: none;
+    width: 100%;
+    padding-top: 0.5em;
+}
+
+.pokemon-stats-info > ul > li > .gauge > .stats--wide {
+    background-color: #30a7d7;
+}

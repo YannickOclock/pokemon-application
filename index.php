@@ -28,10 +28,33 @@
 
     $pokemonDescription = "Description à venir ...";
     
-    /* si la description existe */
+    /* Si la description existe */
     if(isset($results->description)) {
         $pokemonDescription = $results->description;
     }
+
+    // Recherche des types
+    $pokemonTypes = array();
+    foreach($results->types as $type) {
+        $pokemonTypes[] = $type->name;
+    }
+
+    // Recherche des faiblesses
+    $pokemonWeaknesses = array();
+    foreach($results->resistances as $resistance) {
+        if($resistance->multiplier == 2) {
+            $pokemonWeaknesses[] = $resistance->name;
+        }
+    }
+
+    // extraction des stats
+    $hp = $results->stats->hp;
+    $atk = $results->stats->atk;
+    $def = $results->stats->def;
+    $speAtk = $results->stats->spe_atk;
+    $speDef = $results->stats->spe_def;
+    $vit = $results->stats->vit;
+
 
     // Appel de la liste des pokémons pour récupérer le suivant et le précédent
 
@@ -119,6 +142,95 @@
             <div class="pokemon-details--content">
                 <div class="pokemon-details--content-left">
                     <img src="<?= $pokemonAvatar ?>" alt="Carapuce" class="pokemon-avatar">
+                    <div class="pokemon-stats-info">
+                            <h3>Stats de base</h3>
+                            <ul>
+                                <li class="first">
+                                    <ul class="gauge">
+                                        <?php
+                                            $hp = 20 - ($hp / 100 * 20);
+                                            for($i = 0; $i < 20; $i++) {
+                                                if($i <= $hp)
+                                                    echo "<li></li>";
+                                                else
+                                                    echo "<li class='stats--wide'></li>";
+                                            }
+                                        ?>
+                                    </ul>
+                                    <span>PV</span>
+                                </li>
+                                <li>
+                                    <ul class="gauge">
+                                        <?php
+                                            $atk = 20 - ($atk / 100 * 20);
+                                            for($i = 0; $i < 20; $i++) {
+                                                if($i <= $atk)
+                                                    echo "<li></li>";
+                                                else
+                                                    echo "<li class='stats--wide'></li>";
+                                            }
+                                        ?>
+                                    </ul>
+                                    <span>Attaque</span>
+                                </li>
+                                <li>
+                                    <ul class="gauge">
+                                        <?php
+                                            $def = 20 - ($def / 100 * 20);
+                                            for($i = 0; $i < 20; $i++) {
+                                                if($i <= $def)
+                                                    echo "<li></li>";
+                                                else
+                                                    echo "<li class='stats--wide'></li>";
+                                            }
+                                        ?>
+                                    </ul>
+                                    <span>Défense</span>
+                                </li>
+                                <li>
+                                    <ul class="gauge">
+                                        <?php
+                                            $speAtk = 20 - ($speAtk / 100 * 20);
+                                            for($i = 0; $i < 20; $i++) {
+                                                if($i <= $speAtk)
+                                                    echo "<li></li>";
+                                                else
+                                                    echo "<li class='stats--wide'></li>";
+                                            }
+                                        ?>
+                                    </ul>
+                                    <span>Attaque Spéciale</span>
+                                </li>
+                                <li>
+                                    <ul class="gauge">
+                                        <?php
+                                            $speDef = 20 - ($speDef / 100 * 20);
+                                            for($i = 0; $i < 20; $i++) {
+                                                if($i < $speDef)
+                                                    echo "<li></li>";
+                                                else
+                                                    echo "<li class='stats--wide'></li>";
+                                            }
+                                        ?>
+                                    </ul>
+                                    <span>Défense Spéciale</span>
+                                </li>
+                                <li>
+                                    <ul class="gauge">
+                                        <?php
+                                            $vit = 20 - ($vit / 100 * 20);
+                                            for($i = 0; $i < 20; $i++) {
+                                                if($i <= $vit)
+                                                    echo "<li></li>";
+                                                else
+                                                    echo "<li class='stats--wide'></li>";
+                                            }
+                                        ?>
+                                    </ul>
+                                    <span>Vitesse</span>
+                                </li>
+                            </ul>
+                    </div>
                 </div>
                 <div class="pokemon-details--content-right">
                     <p class="pokemon-details--description">
@@ -156,6 +268,22 @@
                                 </li>
                             </ul>
                         </div>
+                    </div>
+                    <div class="pokemon-details--type">
+                        <h3>Type</h3>
+                        <ul>
+                            <?php foreach($pokemonTypes as $pokemonType): ?>
+                                <li class="bgcolor-grey"><?= $pokemonType ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="pokemon-details--weaknesses">
+                        <h3>Faiblesses</h3>
+                        <ul>
+                            <?php foreach($pokemonWeaknesses as $pokemonWeakness): ?>
+                                <li class="bgcolor-grey"><?= $pokemonWeakness ?></li>
+                            <?php endforeach; ?>
+                        </ul>
                     </div>
                 </div>
             </div>
