@@ -1,9 +1,9 @@
 <?php
     // Récupération des données sur une API
 
-    $pokemonNumber = 133;
+    $pokemonNumber = 2;
 
-    $url = "https://api-pokemon-fr.vercel.app/api/v1/pokemon/$pokemonNumber";
+    $url = "http://localhost:5000/api/v1/pokemon/$pokemonNumber";
     $client = curl_init($url);
     curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($client);
@@ -22,7 +22,12 @@
     $pokemonHeight = $results->height;
     $pokemonWeight = $results->weight;
 
-    $pokemonDescription = "Quand il rentre son cou dans sa carapace, il peut projeter de l’eau à haute pression.";
+    $pokemonDescription = "Description à venir ...";
+    
+    /* si la description existe */
+    if(isset($results->description)) {
+        $pokemonDescription = $results->description;
+    }
 
     $pokemonPrevNumber = str_pad(6, 4, '0', STR_PAD_LEFT);
     $pokemonPrevName = "Dracaufeu";
@@ -80,7 +85,7 @@
                 </div>
                 <div class="pokemon-details--content-right">
                     <p class="pokemon-details--description">
-                        Quand il rentre son cou dans sa carapace, il peut projeter de l’eau à haute pression.
+                        <?= $pokemonDescription ?>
                     </p>
                     <div class="pokemon-details--abilities">
                         <div class="pokemon-details--abilities-left">
