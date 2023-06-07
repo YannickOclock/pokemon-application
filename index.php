@@ -1,7 +1,11 @@
 <?php
     // Récupération des données sur une API
 
-    $pokemonNumber = 2;
+    $pokemonNumber = 1;
+    
+    if(isset($_GET['page'])) {
+        $pokemonNumber = $_GET['page'];
+    }
 
     $url = "http://localhost:5000/api/v1/pokemon/$pokemonNumber";
     $client = curl_init($url);
@@ -29,11 +33,44 @@
         $pokemonDescription = $results->description;
     }
 
-    $pokemonPrevNumber = str_pad(6, 4, '0', STR_PAD_LEFT);
-    $pokemonPrevName = "Dracaufeu";
+    // Appel de la liste des pokémons pour récupérer le suivant et le précédent
 
-    $pokemonNextNumber = str_pad(8, 4, '0', STR_PAD_LEFT);
-    $pokemonNextName = "Carabaffe";
+    $url = "http://localhost:5000/api/v1/gen/1";
+    $client = curl_init($url);
+    curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($client);
+    $results = json_decode($response);
+
+    /* valeur précédente par défaut */
+    $pokemonPrevNumberPage = 0;
+    $pokemonPrevNumber = '';
+    $pokemonPrevName = "Inconnu";
+
+    $pokemonNextNumberPage = 0;
+    $pokemonNextNumber = '';
+    $pokemonNextName = "Inconnu";
+
+    foreach($results as $key => $result) {
+        if($result->pokedexId == $pokemonNumber) {
+            /* on a trouvé dans la liste le pokémon actuel */
+
+            /* on cherche le précédent */
+            if(isset($results[$key-1])) {
+                $pokemonPrev = $results[$key-1];
+                $pokemonPrevNumberPage = $pokemonPrev->pokedexId;
+                $pokemonPrevNumber = str_pad($pokemonPrevNumberPage, 4, '0', STR_PAD_LEFT);
+                $pokemonPrevName = $pokemonPrev->name->fr;
+            }
+
+            /* on cherche le suivant */
+            if(isset($results[$key+1])) {
+                $pokemonNext = $results[$key+1];
+                $pokemonNextNumberPage = $pokemonNext->pokedexId;
+                $pokemonNextNumber = str_pad($pokemonNextNumberPage, 4, '0', STR_PAD_LEFT);
+                $pokemonNextName = $pokemonNext->name->fr;
+            }
+        }
+    }
 
 
 ?>
@@ -53,7 +90,7 @@
 <body>
     <div class="container">
         <section class="title">
-            <a href="./dracaufeu" class="button">
+            <a href="index.php?page=<?= $pokemonPrevNumberPage ?>" class="button">
                 <div class="content">
                     <span class="pokemon-btn">
                         <i class="fa-solid fa-angle-left"></i>
@@ -62,7 +99,7 @@
                     <span class="pokemon-name"><?= $pokemonPrevName ?></span>
                 </div>
             </a>
-            <a href="./carabaffe" class="button">
+            <a href="index.php?page=<?= $pokemonNextNumberPage ?>" class="button">
                 <div class="content">
                     <span class="pokemon-name"><?= $pokemonNextName ?></span>
                     <span class="pokemon-number">Nº <?= $pokemonNextNumber ?></span>
