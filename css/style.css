@@ -207,13 +207,13 @@ a.button div.content {
 
 .pokemon-details--type li, .pokemon-details--weaknesses li {
     display: inline-block;
-    width: 32%;
+    width: 25%;
     border-radius: 5px;
     margin-top: 8px;
     margin-right: 8px;
     padding: 4px;
     text-align: center;
-    background-color: grey;
+    /*background-color: grey;*/
 }
 
 /* Stats */
@@ -269,4 +269,96 @@ a.button div.content {
 
 .pokemon-stats-info > ul > li > .gauge > .stats--wide {
     background-color: #30a7d7;
+}
+
+/* couleurs pokemon */
+
+.bgcolor-Insecte {
+    background-color: #729f3f;
+    color: white;
+}
+
+.bgcolor-Ténèbres {
+    background-color: #707070;
+    color: white;
+}
+
+.bgcolor-Dragon {
+    background-color: #53a4cf;
+    color: white;
+}
+
+.bgcolor-Électrik {
+    background-color: #eed535;
+    color: #212121;
+}
+
+.bgcolor-Fée {
+    background-color: #fdb9e9;
+    color: #212121;
+}
+
+.bgcolor-Combat {
+    background-color: #d56723;
+    color: #fff;
+}
+
+.bgcolor-Feu {
+    background-color: #fd7d24;
+    color: #fff;
+}
+
+.bgcolor-Vol {
+    background-color: #3dc7ef;
+    color: #212121;
+}
+
+.bgcolor-Spectre {
+    background-color: #7b62a3;
+    color: #fff;
+}
+
+.bgcolor-Plante {
+    background-color: #9bcc50;
+    color: #212121;
+}
+
+.bgcolor-Sol {
+    background-color: #f7de3f;
+    color: #212121;
+}
+
+.bgcolor-Glace {
+    background-color: #51c4e7;
+    color: #212121;
+}
+
+.bgcolor-Normal {
+    background-color: #a4acaf;
+    color: #212121;
+}
+
+.bgcolor-Poison {
+    background-color: #b97fc9;
+    color: #fff;
+}
+
+.bgcolor-Psy {
+    background-color: #f366b9;
+    color: #fff;
+}
+
+.bgcolor-Roche {
+    background-color: #a38c21;
+    color: #fff;
+}
+
+.bgcolor-Acier {
+    background-color: #9eb7b8;
+    color: #212121;
+}
+
+.bgcolor-Eau {
+    background-color: #4592c4;
+    color: #fff;
 }

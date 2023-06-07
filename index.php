@@ -273,7 +273,7 @@
                         <h3>Type</h3>
                         <ul>
                             <?php foreach($pokemonTypes as $pokemonType): ?>
-                                <li class="bgcolor-grey"><?= $pokemonType ?></li>
+                                <li class="bgcolor-<?= $pokemonType ?>"><?= $pokemonType ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -281,7 +281,7 @@
                         <h3>Faiblesses</h3>
                         <ul>
                             <?php foreach($pokemonWeaknesses as $pokemonWeakness): ?>
-                                <li class="bgcolor-grey"><?= $pokemonWeakness ?></li>
+                                <li class="bgcolor-<?= $pokemonWeakness ?>"><?= $pokemonWeakness ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
