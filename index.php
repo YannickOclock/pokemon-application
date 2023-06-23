@@ -95,6 +95,10 @@
         }
     }
 
+    // Voici le code pour gérer le panier du site
+    $basket = [];
+    $basket[] = ["name" => "Pikachu"]
+
 
 ?>
 
@@ -214,20 +218,6 @@
                                         ?>
                                     </ul>
                                     <span>Défense Spéciale</span>
-                                </li>
-                                <li>
-                                    <ul class="gauge">
-                                        <?php
-                                            $vit = 20 - ($vit / 100 * 20);
-                                            for($i = 0; $i < 20; $i++) {
-                                                if($i <= $vit)
-                                                    echo "<li></li>";
-                                                else
-                                                    echo "<li class='stats--wide'></li>";
-                                            }
-                                        ?>
-                                    </ul>
-                                    <span>Vitesse</span>
                                 </li>
                             </ul>
                     </div>
