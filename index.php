@@ -95,6 +95,10 @@
         }
     }
 
+    // Voici le code pour gérer le panier du site
+    $basket = [];
+    $basket[] = ["name" => "Pikachu"]
+
 
 ?>
 
