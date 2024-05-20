@@ -7,7 +7,7 @@
         $pokemonNumber = $_GET['page'];
     }
 
-    $url = "http://localhost:5000/api/v1/pokemon/$pokemonNumber";
+    $url = "https://tyradex.vercel.app/api/v1/pokemon/$pokemonNumber";
     $client = curl_init($url);
     curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($client);
